@@ -1,40 +1,4 @@
-<?php
-if(isset($_POST['submit']))
- { $name = $_POST['name']; 
-    
-   $email = $_POST['email'];
-   
-   $message = $_POST['message'];
-  
-   $message = wordwrap($message,70);
-   
-   $html1 = "<html><body>
-          <div  style='width:100%; background-color:#009973; padding:20px;'>
-                <div id='templateInner' style='margin:auto; width:70%; background-color:white; padding:20px;'>
-               Nitin,<br>
-                 You have a new contact request. Here are the details:
-                 <hr>
-                 <span><b>Name</b>: ".$name."</span> <br>
-            
-                 <span><b>Email</b>: ".$email."</span><br>
-      
-                 <span><b>Message</b>: ".$message."</span><br>
-                
-                 <hr>
-                 Thanks.<br>
-                 Website: http://nitinmanocha.in
-                </div>
-           </div>
-         </body></html>";
 
-//$headers .= "MIME-Version: 1.0\r\n";
-   $headers = "From: Nitinmanocha_Website;\r\nContent-Type: text/html;\r\n charset=ISO-8859-1;"."\r\n" ;
-    $headers .= 'Bcc: manochanitin99@gmail.com' . "\r\n";
-   $mailSend = mail('manochanitin99@gmail.com','contact Request.', $html1, $headers);
-    
- }
-  
-?>  
 
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -589,7 +553,7 @@ if(isset($_POST['submit']))
 
             <div class="portfolioFilters text-center">
                 <div class="" id="filters">
-                    <button class="btn btn-default" onclick="location.href='gallery.php'" data-scroll-reveal="enter bottom move 10px over 0.2s after 0.1s">View All Images</button>
+                    <button class="btn btn-default" onclick="location.href='/'" data-scroll-reveal="enter bottom move 10px over 0.2s after 0.1s">View All Images</button>
                 </div>
             </div>
         </section>
