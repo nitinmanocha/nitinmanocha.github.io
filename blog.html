@@ -4,7 +4,60 @@
     <title>Nitin Manocha | Software Developer | Microsoft Student Partner</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
+  <script>
+	  
+	  fetch('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@nitinmanocha16')
+   .then((res) => res.json())
+   .then((data) => {
+      
+      const res = data.items 
+      const posts = res.filter(item => item.categories.length > 0) 
+
+      function toText(node) {
+         let tag = document.createElement('div')
+         tag.innerHTML = node
+         node = tag.innerText
+         return node
+      }
+      function shortenText(text,startingPoint ,maxLength) {
+         return text.length > maxLength?
+         text.slice(startingPoint, maxLength):
+         text
+      }
+
+
+      let output = '';
+      posts.forEach((item) => {
+          var categories = ''
+          item.categories.forEach((e)=>{
+            categories = categories + " • " + e
+          })
+         output += `
+                    <div class="blog-entry ftco-animate d-md-flex">
+                    <a href="${item.link}" class="img img-2" style="background-image: url(${item.thumbnail});"></a>
+                    <div class="text text-2 p-4">
+          <h3 class="mb-2"><a href="">${shortenText(item.title, 0, 50)+ '...'}</a></h3>
+          <div class="meta-wrap">
+                            <p class="meta">
+                  <span>${shortenText(item.pubDate,0 ,10)}</span>
+                  <span><a href="${item.link}">${categories}</a></span>
+                  <span> ${item.author}</span>
+                  <span> </span>
+              </p>
+          </div>
+          <p class="mb-4">${'...' + shortenText(toText(item.content),0, 300)+ '...'}</p>
+          <p><a href="${item.link}" class="btn-custom">Read More <span class="ion-ios-arrow-forward"></span></a></p>
+        </div>
+                </div>
+		 ` 
+		 
+
+      })
+      document.querySelector('.blogsection').innerHTML = output
+})
+
+
+  </script>
     
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
@@ -69,7 +122,7 @@
 	    			<div class="col-lg-12">
 	    				<div class="row">
 			    			<div class="col-md-12">
-								<script>blog();</script>
+								<div class="blogsection"></div>
 			    			</div>
 			    		</div><!-- END-->
 			    	
@@ -139,61 +192,7 @@
   <script src="js/bootstrap-datepicker.js"></script>
   <script src="js/jquery.timepicker.min.js"></script>
   <script src="js/scrollax.min.js"></script>
-  <script>
 
-	function blog(){
-	fetch('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@nitinmanocha16')
- .then((res) => res.json())
- .then((data) => {
-	
-	const res = data.items 
-	const posts = res.filter(item => item.categories.length > 0) 
-
-	function toText(node) {
-	   let tag = document.createElement('div')
-	   tag.innerHTML = node
-	   node = tag.innerText
-	   return node
-	}
-	function shortenText(text,startingPoint ,maxLength) {
-	   return text.length > maxLength?
-	   text.slice(startingPoint, maxLength):
-	   text
-	}
-
-
-	let output = '';
-	posts.forEach((item) => {
-		var categories = ''
-		item.categories.forEach((e)=>{
-		  categories = categories + " • " + e
-		})
-	   output += `
-				  <div class="blog-entry ftco-animate d-md-flex">
-				  <a href="${item.link}" class="img img-2" style="background-image: url(${item.thumbnail});"></a>
-				  <div class="text text-2 p-4">
-		<h3 class="mb-2"><a href="">${shortenText(item.title, 0, 50)+ '...'}</a></h3>
-		<div class="meta-wrap">
-						  <p class="meta">
-				<span>${shortenText(item.pubDate,0 ,10)}</span>
-				<span><a href="${item.link}">${categories}</a></span>
-				<span> ${item.author}</span>
-				<span> </span>
-			</p>
-		</div>
-		<p class="mb-4">${'...' + shortenText(toText(item.content),0, 300)+ '...'}</p>
-		<p><a href="${item.link}" class="btn-custom">Read More <span class="ion-ios-arrow-forward"></span></a></p>
-	  </div>
-			  </div>
-	   ` 
-	   
-
-	})
-	return output
-  })
-  }
-
-</script>
 
   <script src="js/main.js"></script>
     
