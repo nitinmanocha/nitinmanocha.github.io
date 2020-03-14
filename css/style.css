@@ -8752,3 +8752,24 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+.center{
+  text-align: center;
+}
+.border2b{
+  padding: 20px 20px 20px 20px;
+  border-radius: 2px;
+  border:solid rgb(172, 172, 172) 1px;
+}
+
+.m50{
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+}
+.bd{
+  border: 1px #ad7979;
+  border-radius: 2px;
+}
+.mb10{
+  margin-bottom: 10px;
+}
