@@ -1,0 +1,17 @@
+{
+    "name": "Nitin Manocha",
+    "short_name": "Nitin",
+    "theme_color": "#D1A71D",
+    "background_color": "#D1A71D",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "https://nitinmanocha.github.io/",
+    "description": "My Site",
+    "orientation": "any",
+    "icons": [
+        {
+            "src": "https://res.cloudinary.com/thewanderlusts-in/image/upload/v1590155863/website/yzx4g6k9bvf3kuusfctn.jpg",
+            "sizes": "1024x1024"
+        }
+    ]
+}
